@@ -1,27 +1,67 @@
-<html>
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="lt-ie10" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lofoten - Before and After of Fredvang, Norway</title>
 
+    <link href="css/foundation.css" rel="stylesheet" type="text/css" />
     <link href="css/twentytwenty.css" rel="stylesheet" type="text/css" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <style>
+      .img-container {
+        display: inline-block;
+        height: 100vh;
+        width: 100%;
+        text-align: center;
+      }
+
+      .img-lofoten  {
+        height: 100%;
+        vertical-align: top;
+      }
+
+      .twentytwenty-overlay{
+        z-index: -1;
+      }
+    </style>
     
-    <script src="https://code.jquery.com/jquery-3.2.1.js" 
-            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-            crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
     <script src="js/jquery.event.move.js"></script>
     <script src="js/jquery.twentytwenty.js"></script>
     
-    <script>
-      $(window).load(function() {
-      $("#container").twentytwenty();
-    });
-    </script>
   </head>
   <body>
+
     <div id="container" class="twentytwenty-container">
-      <img src="before.png">
-      <img src="after.png">
+      <div class="img-container">
+        <img src="img/fredvang-lofoten-norway-before.jpg" class="img-lofoten img-responsive">
+      <div/>
+
+      <div class="img-container">
+        <img src="img/fredvang-lofoten-norway-after.jpg" class="img-lofoten img-responsive">
+      </div>
     </div>
+
+    <script>
+      $(function(){
+        $("#container").twentytwenty();
+      });
+
+      $(window).resize(function(){
+        // A dirty resize hack. Didn't put time to figure out proper responsiveness.
+        location.reload();
+      });
+    </script>
+
   </body>
 </html>
